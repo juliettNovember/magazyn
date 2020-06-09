@@ -12,24 +12,13 @@ unit_price = items.get("unit_price")
 
 
 
-name.insert(0, "----")
-quantity.insert(0, "--------")
-unit.insert(0, "----")
-unit_price.insert(0, "----------")
-name.insert(0, "Name")
-quantity.insert(0, "Quantity")
-unit.insert(0, "Unit")
-unit_price.insert(0, "Unit Price")
-#print(name)
+
 
 def get_items():
-    #print("Name"+'\t'+"Quantity"+'\t'+"Unit"+'\t'+"Unit Price (PLN)"+'\n')
+    print("Name"+'\t'+"Quantity"+'\t'+"Unit"+'\t'+"Unit Price (PLN)")
+    print("----"+'\t'+"--------"+'\t'+"----"+'\t'+"----------------")
     for i in range (len(name)):
-        print( str(name[i])+'\t'+ str(quantity[i])+'\t'+ str(unit.rjust(10)[i]) +'\t' + str(unit_price[i])+ '\n')
-
-    
-    
-
+        print( str(name[i])+'\t'+ str(quantity[i])+'\t\t'+ str(unit[i]) +'\t' + str(unit_price[i]))
 
 
 input("What you like to do?")
