@@ -1,3 +1,4 @@
+
 items ={
     "name" : ["Milk", "Sugar", "Flour", "Coffee"],
     "quantity" : [120, 1000, 12000, 25],
@@ -20,16 +21,24 @@ def get_items():
     for i in range (len(name)):
         print( str(name[i])+'\t'+ str(quantity[i])+'\t\t'+ str(unit[i]) +'\t' + str(unit_price[i]))
 
+input("What you like to do? ")
 
-input("What you like to do?")
-
-while "show":
-    
+while "add":
+    print("Adding to warehouse..")
+    input("Item name: ")
+    input("Item quantity: ")
+    input("Item unit of measure. Eg. l, kg, pcs: ")
+    input("Item price in PLN: ")
     get_items()
     exit()
 
-
+while "show":
+    get_items()
+    exit()
 
 while "exit":
     print("Exiting... Bye!")
     exit()
+
+
+
