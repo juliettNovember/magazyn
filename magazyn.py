@@ -11,26 +11,28 @@ quantity = items.get("quantity")
 unit = items.get("unit")
 unit_price = items.get("unit_price")
 
-
-
-
-
 def get_items():
     print("Name"+'\t'+"Quantity"+'\t'+"Unit"+'\t'+"Unit Price (PLN)")
     print("----"+'\t'+"--------"+'\t'+"----"+'\t'+"----------------")
     for i in range (len(name)):
         print( str(name[i])+'\t'+ str(quantity[i])+'\t\t'+ str(unit[i]) +'\t' + str(unit_price[i]))
 
+def add_item():
+    global name
+    print("Adding to warehouse..")
+    name.append(input("Item name: "))
+    quantity.append(input("Item quantity: "))
+    unit.append(input("Item unit of measure. Eg. l, kg, pcs: "))
+    unit_price.append(input("Item price in PLN: "))
+    get_items()
+    
+
 input("What you like to do? ")
 
 while "add":
-    print("Adding to warehouse..")
-    input("Item name: ")
-    input("Item quantity: ")
-    input("Item unit of measure. Eg. l, kg, pcs: ")
-    input("Item price in PLN: ")
-    get_items()
+    add_item()
     exit()
+    
 
 while "show":
     get_items()
