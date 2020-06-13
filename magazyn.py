@@ -5,6 +5,14 @@ items ={
     "unit" : ["l", "kg", "kg", "kg"],
     "unit_price" : [2.3, 3, 1.2, 40]
 }
+
+sold_items = {
+    "name" : [],
+    "quantity" : []
+}
+
+sold_items = []
+
 acceptable_units = ["l", "kg", "pcs"]
 name = items.get("name")
 quantity = items.get("quantity")
@@ -56,6 +64,8 @@ def sell_item():
             item_to_sell = input("Item name: ")
             if item_to_sell in name:
                 sale_index = name.index(item_to_sell)
+                sold_items.append(item_to_sell)
+                print(sold_items)
                 quantity_to_sell = float(input("Quantity to sell: "))
                 quantity_before_sell = float(quantity[sale_index])
                 quantity[sale_index] = quantity_before_sell - quantity_to_sell
