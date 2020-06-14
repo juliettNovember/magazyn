@@ -11,6 +11,7 @@ sold_items = {
     "quantity" : []
 }
 
+costs = 0
 sold_name = []
 sold_items["name"].append(sold_name)
 sold_quantity = []
@@ -72,7 +73,6 @@ def sell_item():
                 quantity_before_sell = float(quantity[sale_index])
                 quantity[sale_index] = quantity_before_sell - quantity_to_sell
                 sold_quantity.append(float((quantity[sale_index])))
-                print(sold_items)
                 get_items()
             else:
                 print("Product not in list! Try again!")
@@ -87,6 +87,14 @@ def sell_item():
                     
         except ValueError:
             pass
+
+def get_costs():
+    global costs
+    for i in range (len(name)):
+        costs += quantity[i] * unit_price[i]
+
+    print(f"Costs: {costs}")
+    
 
 def main():
     menu = input("What you like to do? ")
@@ -105,6 +113,10 @@ def main():
 
     elif menu == 'sale':
         sell_item()
+        exit()
+
+    elif menu == 'costs':
+        get_costs()
         exit()
 
     else:
