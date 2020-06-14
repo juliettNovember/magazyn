@@ -104,15 +104,14 @@ def get_costs():
 def get_income():
     global income
     for i in range (len(sold_name)):
-        print(sold_quantity[i])
-        print(unit_price[i])
         income += sold_quantity[i] * unit_price[i]
-    
-    print(f"Income: {income}")
+        
+
+    print(f"Income: {round(income, 2)}")
 
 def get_revenue():
     revenue = (income - costs)
-    print(f"-------- \nRevenue: {revenue} PLN")
+    print(f"-------- \nRevenue: {round(revenue, 2)} PLN")
 
 def main():
     menu = input("What you like to do? ")
