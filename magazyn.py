@@ -12,6 +12,7 @@ sold_items = {
 }
 
 costs = 0
+income = 0
 sold_name = []
 sold_items["name"].append(sold_name)
 sold_quantity = []
@@ -94,7 +95,17 @@ def get_costs():
         costs += quantity[i] * unit_price[i]
 
     print(f"Costs: {costs}")
+
+def get_income():
+    global income
+    for i in range (len(sold_name)):
+        income += sold_quantity[i] * unit_price[i]
     
+    print(f"Income: {income}")
+
+def get_revenue():
+    revenue = (income - costs)
+    print(f"-------- \nRevenue: {revenue} PLN")
 
 def main():
     menu = input("What you like to do? ")
@@ -118,6 +129,13 @@ def main():
     elif menu == 'costs':
         get_costs()
         exit()
+    
+    elif menu == 'show_revenue':
+        print("Revenue breakdown (PLN)")
+        get_income()
+        get_costs()
+        get_revenue()
+        main()
 
     else:
         main()
