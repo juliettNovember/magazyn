@@ -11,7 +11,10 @@ sold_items = {
     "quantity" : []
 }
 
-sold_items = []
+sold_name = []
+sold_items["name"].append(sold_name)
+sold_quantity = []
+sold_items["quantity"].append(sold_quantity)
 
 acceptable_units = ["l", "kg", "pcs"]
 name = items.get("name")
@@ -64,18 +67,22 @@ def sell_item():
             item_to_sell = input("Item name: ")
             if item_to_sell in name:
                 sale_index = name.index(item_to_sell)
-                sold_items.append(item_to_sell)
-                print(sold_items)
+                sold_name.append(item_to_sell)
                 quantity_to_sell = float(input("Quantity to sell: "))
                 quantity_before_sell = float(quantity[sale_index])
                 quantity[sale_index] = quantity_before_sell - quantity_to_sell
+                sold_quantity.append(float((quantity[sale_index])))
+                print(sold_items)
                 get_items()
             else:
                 print("Product not in list! Try again!")
                 add_question = input("Would you like add product to list? [Y/N] ")
-                while add_question == "Y":
+                if add_question == "Y":
                     add_item()
-                while add_question == "N":
+                elif add_question == "N":
+                    main()
+                else:
+                    print("Wrong answer! Try again!")
                     main()
                     
         except ValueError:
