@@ -8,8 +8,16 @@ items ={
 
 sold_items = {
     "name" : [],
-    "quantity" : []
+    "quantity" : [],
+    "unit" : [],
+    "unit_price" : []
 }
+
+acceptable_units = ["l", "kg", "pcs"]
+name = items.get("name")
+quantity = items.get("quantity")
+unit = items.get("unit")
+unit_price = items.get("unit_price")
 
 costs = 0
 income = 0
@@ -17,12 +25,8 @@ sold_name = []
 sold_items["name"].append(sold_name)
 sold_quantity = []
 sold_items["quantity"].append(sold_quantity)
-
-acceptable_units = ["l", "kg", "pcs"]
-name = items.get("name")
-quantity = items.get("quantity")
-unit = items.get("unit")
-unit_price = items.get("unit_price")
+sold_items["unit"].append(unit)
+sold_items["unit_price"].append(unit_price)
 
 def get_items():
     print("Name"+'\t'+"Quantity"+'\t'+"Unit"+'\t'+"Unit Price (PLN)")
@@ -73,7 +77,8 @@ def sell_item():
                 quantity_to_sell = float(input("Quantity to sell: "))
                 quantity_before_sell = float(quantity[sale_index])
                 quantity[sale_index] = quantity_before_sell - quantity_to_sell
-                sold_quantity.append(float((quantity[sale_index])))
+                sold_quantity.append(quantity_to_sell)
+                print(f"Successfully sold {quantity_to_sell} {unit[sale_index]} of {item_to_sell}")
                 get_items()
             else:
                 print("Product not in list! Try again!")
@@ -99,6 +104,8 @@ def get_costs():
 def get_income():
     global income
     for i in range (len(sold_name)):
+        print(sold_quantity[i])
+        print(unit_price[i])
         income += sold_quantity[i] * unit_price[i]
     
     print(f"Income: {income}")
