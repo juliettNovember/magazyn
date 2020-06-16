@@ -126,7 +126,14 @@ def export_items_to_csv():
         writer.writerow({'name': 'Coffee', 'quantity': '25', 'unit': 'kg', 'unit_price': '40'})
         print("Successfully exported to magazyn.csv")
 
+def export_sales_to_csv():
+    with open('magazyn.csv', 'w', newline='') as csvfile:
+        fieldnames = ['name', 'quantity', 'unit', 'unit_price']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
+        writer.writeheader()
+        writer.writerow({'name': sold_name, 'quantity': sold_quantity})
+    
 def main():
     menu = input("What you like to do? ")
 
@@ -159,6 +166,7 @@ def main():
     
     elif menu == 'save':
         export_items_to_csv()
+        export_sales_to_csv()
         main()
 
     else:
