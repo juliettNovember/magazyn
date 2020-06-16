@@ -1,3 +1,4 @@
+import csv
 
 items ={
     "name" : ["Milk", "Sugar", "Flour", "Coffee"],
@@ -113,9 +114,22 @@ def get_revenue():
     revenue = (income - costs)
     print(f"-------- \nRevenue: {round(revenue, 2)} PLN")
 
+def export_items_to_csv():
+    with open('magazyn.csv', 'w', newline='') as csvfile:
+        fieldnames = ['name', 'quantity', 'unit', 'unit_price']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+        writer.writerow({'name': 'Milk', 'quantity': '120', 'unit': 'l', 'unit_price': '2.3'})
+        writer.writerow({'name': 'Sugar', 'quantity': '1000', 'unit': 'kg', 'unit_price': '3'})
+        writer.writerow({'name': 'Flour', 'quantity': '12000', 'unit': 'kg', 'unit_price': '1.2'})
+        writer.writerow({'name': 'Coffee', 'quantity': '25', 'unit': 'kg', 'unit_price': '40'})
+        print("Successfully exported to magazyn.csv")
+
+
 def main():
     menu = input("What you like to do? ")
-    
+
     if menu == "add":
         add_item()
         exit()
@@ -141,6 +155,10 @@ def main():
         get_income()
         get_costs()
         get_revenue()
+        main()
+    
+    elif menu == 'save':
+        export_items_to_csv()
         main()
 
     else:
